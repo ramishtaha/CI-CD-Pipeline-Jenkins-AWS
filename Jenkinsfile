@@ -19,14 +19,7 @@ pipeline {
               steps { 
                 //  aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
                     sh '''
-                        trivy image alpine:latest
-                        my_exit_code=$?
-                        if [ ${my_exit_code} == 1 ]; then
-                            echo "Image scanning failed. Some vulnerabilities found"
-                            exit 1;
-                        else
-                            echo "Image is scanned Successfully. No vulnerabilities found"
-                        fi;
+                        trivy image --exit-code 1 --severity HIGH,CRITICAL alpine:latest
                     '''
               }
          }         
