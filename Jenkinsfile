@@ -33,12 +33,13 @@ pipeline {
          }
          stage('Upload to AWS') {
               steps {
-                  {
-                      sh 'aws s3 cp s3://ramish-jenkins-multistep-pipeline/index.html ./www'
-                      sh 'docker run --name tmp-nginx-container -d -p 80:80 nginx'
-                      sh 'docker cp tmp-nginx-container:/etc/nginx/nginx.conf ./www'
+                  
+                      sh 'sudo docker rm -f $(sudo docker ps -a -q)'
+                      sh 'aws s3 cp s3://ramish-jenkins-multistep-pipeline/index.html index.html'
+                      sh 'sudo docker run --name static -d -p 80:80 nginx'
+                      sh 'sudo docker cp index.html static:/usr/share/nginx/html/index.html'
                       
-                  }
+                  
               }
          }
      }
