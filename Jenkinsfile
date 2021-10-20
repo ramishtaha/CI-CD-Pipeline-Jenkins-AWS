@@ -31,7 +31,7 @@ pipeline {
                   }
               }
          }
-         stage('Upload to AWS') {
+         stage('Deploy Ngnix Container') {
               steps {
                   
                       sh 'sudo docker rm -f $(sudo docker ps -a -q)'
