@@ -18,9 +18,10 @@ pipeline {
          stage('Security Scan') {
               steps { 
                 //  aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
-                    sh '''
-                        trivy image --exit-code 1 --severity HIGH,CRITICAL nginx:latest
-                    '''
+                    // sh '''
+                    //     trivy image --exit-code 1 --severity HIGH,CRITICAL nginx:latest
+                    // '''
+                    sh 'trivy image nginx:latest'
               }
          }         
          stage('Upload to AWS') {
