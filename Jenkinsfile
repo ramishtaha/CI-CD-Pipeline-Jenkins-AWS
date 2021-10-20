@@ -32,12 +32,10 @@ pipeline {
                   }
               }
          }
-         stage('Deploy Ngnix Container') {
+         stage('Deploy Website to Ngnix Container') {
               steps {
                   
-                      sh 'sudo docker rm -f static'
                       sh 'aws s3 cp s3://ramish-jenkins-multistep-pipeline/index.html index.html'
-                      sh 'sudo docker run --name static -d -p 80:80 nginx'
                       sh 'sudo docker cp index.html static:/usr/share/nginx/html/index.html'
                       
                   
