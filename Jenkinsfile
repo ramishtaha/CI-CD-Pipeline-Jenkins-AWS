@@ -27,7 +27,7 @@ pipeline {
               steps {
                   withAWS(region:'ap-south-1',credentials:'jenkins') {
                   sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'ci-cd-ramish')
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'ramish-jenkins-multistep-pipeline')
                   }
               }
          }
