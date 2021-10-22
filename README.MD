@@ -10,6 +10,7 @@
 It's nothing like building going on here, It's just showing some outputs.
 ## Lint HTML
 This stage Checks for the Errors in The Static HTML file, If there are any errors, It outputs Exit Code 1 and pipeline Stops. Else The pipeline continues.
+* There are more used of Tidy, It also corrects the HTML files but Here I have just used it for checking the code.
 ## Security Scan
 This stage Scans the Docker Image file for vulnerebilities and outputs it on the console.
 * There's one functionality of this Stage which I commented because I could not find or build a proper Image file. It stops the pipeline if the Security Risks in the image file is of HIGH or CRITICAL.
